@@ -10,13 +10,15 @@
 ### Обязательные требования
 - Использовать образ с Python, например python:3.11.
 - Внутри образа должна быть установлена библиотека из файла requirements.txt через команду:
-```RUN pip install --no-cache-dir -r requirements.txt
+```
+RUN pip install --no-cache-dir -r requirements.txt
 ```
 - В образе есть nano
 - У образа должен быть тег.
 - В контейнере приложение должно находиться в папке /app.
 - Запуск приложения должен происходить через:
-```CMD ["python", "app.py"]
+```
+CMD ["python", "app.py"]
 ```
 - В контейнере должен быть установлен nano.
 ### Базовая сдача
@@ -45,39 +47,51 @@
 8. Если база готова — перейти к заданиям со звёздочкой.
 ### Шпаргалка по командам
 ### Сборка образа
-```docker build -t my-app:v1 .
+```
+docker build -t my-app:v1 .
 ```
 ### Запуск контейнера
-```docker run --name my-app my-app:v1
+```
+docker run --name my-app my-app:v1
 ```
 ### Запуск в фоне
-```docker run -d --name my-app my-app:v1
+```
+docker run -d --name my-app my-app:v1
 ```
 ### Просмотр запущенных контейнеров
-```docker ps
+```
+docker ps
 ```
 ### Просмотр логов контейнера
-```docker logs -f my-app
+```
+docker logs -f my-app
 ```
 ### Остановка контейнера
-```docker stop my-app
+```
+docker stop my-app
 ```
 ### Удаление контейнера
-```docker rm my-app
+```
+docker rm my-app
 ```
 ### История слоёв образа
-```docker image history my-app:v1
+```
+docker image history my-app:v1
 ```
 ### Список локальных образов
-```docker images
+```
+docker images
 ```
 ### Зайти внутрь контейнера
-```docker exec -it my-app bash
+```
+docker exec -it my-app bash
 ```
 ### Добавить образу новое название
-```docker tag my_image:1.0 sdeithwen/my_image:1.0```
+```docker tag my_image:1.0 sdeithwen/my_image:1.0
+```
 ### Команды для работы с Docker Hub
-```docker login
+```
+docker login
 docker push sdeithwen/my_image:1.0
 ```
 ### Задания со звёздочкой
