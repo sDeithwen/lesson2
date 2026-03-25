@@ -1,0 +1,60 @@
+services:
+  service_name:
+    # Параметр: image
+    # Формат: image: ИМЯ_ОБРАЗА:ТЕГ
+    image: ИМЯ_ОБРАЗА:ТЕГ
+
+    # Параметр: container_name
+    # Формат: container_name: ИМЯ_КОНТЕЙНЕРА
+    container_name: ИМЯ_КОНТЕЙНЕРА
+
+    # Параметр: ports
+    # Формат: ports: - "ХОСТ_ПОРТ:КОНТЕЙНЕР_ПОРТ"
+    ports:
+      - "ХОСТ_ПОРТ:КОНТЕЙНЕР_ПОРТ"
+
+    # Параметр: volumes (bind mount)
+    # Формат: volumes: - "ПУТЬ_НА_ХОСТЕ:ПУТЬ_В_КОНТЕЙНЕРЕ"
+    # Примечание: если путь начинается с . или / - это bind mount (связь с файлами хоста)
+    # Если путь без . и / - это именованный том - volume (управляется Docker)
+    volumes:
+      - "ПУТЬ_НА_ХОСТЕ:ПУТЬ_В_КОНТЕЙНЕРЕ"
+
+    # Параметр: networks
+    # Формат: networks: - ИМЯ_СЕТИ
+    networks:
+      - ИМЯ_СЕТИ
+
+    # Параметр: environment
+    # Формат: environment: - ПЕРЕМЕННАЯ=${ПЕРЕМЕННАЯ_ИЗ_ENV}
+    environment:
+      - ПЕРЕМЕННАЯ=${ПЕРЕМЕННАЯ_ИЗ_ENV}
+
+    # Параметр: healthcheck
+    healthcheck:
+      test: ["CMD", "КОМАНДА", "АРГУМЕНТ"]
+      interval: 5s
+      timeout: 3s
+      retries: 3
+      start_period: 15s
+
+    # Параметр: depends_on (простая зависимость)
+    # Формат: depends_on: - ИМЯ_СЕРВИСА
+    depends_on:
+      - ИМЯ_СЕРВИСА
+
+    # Параметр: depends_on (условная зависимость с healthcheck)
+    # Формат:
+    #   depends_on:
+    #     ИМЯ_СЕРВИСА:
+    #       condition: service_healthy
+    depends_on:
+      ИМЯ_СЕРВИСА:
+        condition: service_healthy
+
+networks:
+  # Параметр: имя сети
+  # Формат: ИМЯ_СЕТИ:
+  #         driver: bridge
+  ИМЯ_СЕТИ:
+    driver: bridge
